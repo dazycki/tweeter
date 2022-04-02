@@ -1,0 +1,19 @@
+body {
+  color: white;
+}
+
+.headerStyling {
+  height: 400px;
+  width: 100%;
+  background-color: #d89820;
+  background-image: url("/images/60-lines.png");
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.nameTitle {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 40px;
+}
