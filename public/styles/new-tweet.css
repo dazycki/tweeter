@@ -16,12 +16,6 @@
   font-size: 18px;
 }
 
-.tweetCount {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-}
-
 .new-tweet {
   width: 60%;
 }
@@ -34,7 +28,7 @@
   background-color: transparent;
   resize: none;
   outline: none;
-  height: 25px;
-  overflow: hidden;
+  height: 50px;
+  overflow: auto;
   width: 100%;
 }
