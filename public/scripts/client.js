@@ -22,7 +22,7 @@ const createTweetElement = function(tweet) {
   const $tweet = $('<article class="tweet">').append(`
   <header>
     <span>
-      <img src="${tweet.user.avatars}" class="avatar">
+      <img src="${tweet.user.avatars}" class="avatar" alt="profile picture">
       <h4 class="name">${tweet.user.name}</h4>
     </span>
     <h4 class="handle">${tweet.user.handle}</h4>
