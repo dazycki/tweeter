@@ -4,9 +4,9 @@ Tweeter is a single-page Twitter clone, where users can create short posts of up
 
 ## Final Product
 
-!["Screenshot of desktop view"](https://github.com/dazycki/tinyapp/blob/master/docs/welcome-page.png)
-!["Screenshot of mobile view"](https://github.com/dazycki/tinyapp/blob/master/docs/url-list.png)
-!["Screenshot of form validation"](https://github.com/dazycki/tinyapp/blob/master/docs/edit-url.png)
+!["Screenshot of desktop view"](https://github.com/dazycki/tweeter/blob/master/docs/desktopView.png)
+!["Screenshot of mobile view"](https://github.com/dazycki/tweeter/blob/master/docs/mobileView.png)
+!["Screenshot of form validation"](https://github.com/dazycki/tweeter/blob/master/docs/fromValidation.png)
 
 ## Dependencies
 
