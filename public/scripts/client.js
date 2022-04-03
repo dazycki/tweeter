@@ -1,17 +1,16 @@
-$(document).ready(function() {
-  
-  const renderTweets = function(tweets) {
-    const $tweets = $('#tweets-container');
-    $tweets.empty();
-    for (const tweet of tweets) {
-      const $tweet = createTweetElement(tweet);
-      $tweets.prepend($tweet);
-    }
-  };
+// loops through array of tweets and render HTML article for each
+const renderTweets = function(tweets) {
+  const $tweets = $('#tweets-container');
+  $tweets.empty();
+  for (const tweet of tweets) {
+    const $tweet = createTweetElement(tweet);
+    $tweets.prepend($tweet);
+  }
+};
 
-  const createTweetElement = function(tweet) {
-  
-    const $tweet = $('<article class="tweet">').append(`
+// creates HTML article for each tweet
+const createTweetElement = function(tweet) {
+  const $tweet = $('<article class="tweet">').append(`
   <header>
     <span>
       <img src="${tweet.user.avatars}" class="avatar">
@@ -29,32 +28,46 @@ $(document).ready(function() {
       <i class="fa-solid fa-heart tweetIcon"></i>
     </span>
   </footer>`);
+  return $tweet;
+};
 
-    return $tweet;
-  };
-
-  const $form = $('#newTweetForm');
-  
-  $form.on('submit', function(event) {
-    event.preventDefault();
-    const serializedData = $(event.target).serialize();
-    
-    $.post('/tweets', serializedData, response => {
-      console.log(response);
-      renderTweets();
+// loads tweets from db
+const loadTweets = (url, method, cb) => {
+  $.ajax({ url, method})
+    .then(data => {
+      cb(data);
+    })
+    .catch(err => {
+      console.log('Error:', err);
     });
-  
+};
+
+
+$(document).ready(function() {
+
+  // once page has loaded fetch and display tweets
+  loadTweets("/tweets", "GET", renderTweets);
+
+  // logic to handle new tweet form submissions
+  const $form = $("#newTweetForm");
+  $form.on("submit", function(event) {
+    event.preventDefault();
+    const characterLength = $("#tweet-text").val().length;
+    if (characterLength > 140) {
+      alert("Error: this tweet is too long, please limit it to 140 characters.");
+      return;
+    } else if (characterLength === 0) {
+      alert("Error: this tweet is too short, please enter at least 1 character.");
+      return;
+    } else {
+      const serializedData = $(this).serialize();
+      $.post("/tweets", serializedData, () => {
+        loadTweets("/tweets", "GET", renderTweets); // reloads tweets to reflect new entry
+        $("#tweet-text").val(""); // resets textarea
+        $(".counter").val("140"); // resets character
+      });
+    }
+    
   });
 
-  const loadTweets = (url, method, cb) => {
-    $.ajax({ url, method})
-      .then(data => {
-        cb(data);
-      })
-      .catch(err => {
-        console.log('Error:', err);
-      })
-  };
-
-  loadTweets("/tweets", "GET", renderTweets);
 });
