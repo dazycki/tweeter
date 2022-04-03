@@ -42,24 +42,18 @@ const renderTweets = function(tweets) {
 }
 
 const createTweetElement = function(tweet) {
-  const avatar = tweet.user.avatars;
-  const name = tweet.user.name;
-  const handle = tweet.user.handle;
-  const text = tweet.content.text;
-  const timeStamp = tweet.created_at;
-
   const $tweet = $('<article class="tweet">').append(`
   <header>
     <span>
-      <img src="${avatar}" class="avatar">
-      <h4 class="name">${name}</h4>
+      <img src="${tweet.user.avatars}" class="avatar">
+      <h4 class="name">${tweet.user.name}</h4>
     </span>
-    <h4 class="handle">${handle}</h4>
+    <h4 class="handle">${tweet.user.handle}</h4>
   </header>
-  <p>${text}</p>
+  <p>${tweet.content.text}</p>
   <hr>
   <footer>
-    <h6>${timeStamp}</h6>
+    <h6>${tweet.created_at}</h6>
     <span>
       <i class="fa-solid fa-flag tweetIcon"></i>
       <i class="fa-solid fa-retweet tweetIcon"></i>
