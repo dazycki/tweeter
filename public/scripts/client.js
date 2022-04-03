@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+  
   const renderTweets = function(tweets) {
     const $tweets = $('#tweets-container');
     $tweets.empty();
@@ -22,7 +22,7 @@ $(document).ready(function() {
   <p>${tweet.content.text}</p>
   <hr>
   <footer>
-    <h6>${tweet.created_at}</h6>
+    <h6>${timeago.format(tweet.created_at)}</h6>
     <span>
       <i class="fa-solid fa-flag tweetIcon"></i>
       <i class="fa-solid fa-retweet tweetIcon"></i>
@@ -47,14 +47,11 @@ $(document).ready(function() {
   });
 
   const loadTweets = (url, method, cb) => {
-    $.ajax({
-      url,
-      method,
-    })
-      .done(data => {
+    $.ajax({ url, method})
+      .then(data => {
         cb(data);
       })
-      .fail(err => {
+      .catch(err => {
         console.log('Error:', err);
       })
   };
