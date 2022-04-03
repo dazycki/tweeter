@@ -27,6 +27,41 @@ body {
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
 
+@media only screen and (min-width: 1024px) {
+  .twoColumnLayout {
+    display: flex;
+    flex-direction: row;
+    margin-top: 100px;
+    padding: 5% 3%;
+  }
+
+  header.headerStyling {
+    width: 40%;
+    margin: 0;
+  }
+
+  main.container {
+    width: 60%;
+  }
+
+  .nav {
+    background-color: #4056a1;
+    padding: 1.5em;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .twoColumnLayout {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .headerStyling {
+    padding-top: 1.5em;
+    margin: 0 0 1em 0;
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -58,5 +93,4 @@ main {
 
 section {
   width: 60%;
-  margin: 1rem 0;
 }
