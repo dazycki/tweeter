@@ -16,6 +16,8 @@ article.tweet header {
 
 article.tweet span {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 article.tweet .name {
@@ -23,7 +25,7 @@ article.tweet .name {
   margin-left: 0.3em;
 }
 
-article.tweet .username {
+article.tweet .handle {
   color: #4056a1;
   opacity: 50%;
 }
@@ -47,4 +49,9 @@ article.tweet hr {
 
 .tweetIcon:hover {
   color: #ca9824;
+}
+
+.avatar {
+  width: 1.5em;
+  height: 1.5em;
 }
