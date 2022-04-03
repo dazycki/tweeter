@@ -61,20 +61,25 @@ $(document).ready(function() {
   // logic to handle new tweet form submissions
   const $form = $("#newTweetForm");
   $form.on("submit", function(event) {
+    
     event.preventDefault();
+    $('#errorBanner').slideUp('fast'); // reset error banner for new submissions
+    
     const characterLength = $("#tweet-text").val().length;
     if (characterLength <= 0) {
-      alert("Error: this tweet is too short, please enter at least 1 character.");
+      $('#errorBanner').find('.errorText').html('Error: this tweet is too short, please enter at least 1 character.');
+      $('#errorBanner').slideDown('fast');
       return;
     } else if (characterLength > 140) {
-      alert("Error: this tweet is too long, please limit it to 140 characters.");
+      $('#errorBanner').find('.errorText').html('Error: this tweet is too long, please limit it to 140 characters.');
+      $('#errorBanner').slideDown('fast');
       return;
     } else {
       const serializedData = $(this).serialize();
       $.post("/tweets", serializedData, () => {
         loadTweets("/tweets", "GET", renderTweets); // reloads tweets to reflect new entry
         $("#tweet-text").val(""); // resets textarea
-        $(".counter").val("140"); // resets character
+        $(".counter").val("140"); // resets character count
       });
     }
     

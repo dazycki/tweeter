@@ -1,5 +1,5 @@
 form {
-  margin: 0.2em 0;
+  margin: 0.2em auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -35,4 +35,26 @@ form {
   overflow: auto;
   width: 100%;
   margin-bottom: 0.2em;
+}
+
+#errorBanner {
+  height: auto;
+  background-color: #f59191;
+  color: #810303;
+  border-radius: 10px;
+  border: 2px solid #810303;
+  margin: 1em auto;
+  padding: 0.3em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  align-items: center;
+  display: none;
+}
+
+div#errorBanner p {
+  margin: 0 0 0 0.3em;
+  font-weight: 900;
+  font-size: 18px;
+  display: inline;
 }
