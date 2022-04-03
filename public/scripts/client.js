@@ -1,9 +1,3 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
-
 $(document).ready(function() {
 
 // Fake data taken from initial-tweets.json
@@ -42,6 +36,7 @@ const renderTweets = function(tweets) {
 }
 
 const createTweetElement = function(tweet) {
+  
   const $tweet = $('<article class="tweet">').append(`
   <header>
     <span>
@@ -66,5 +61,17 @@ const createTweetElement = function(tweet) {
 
 renderTweets(data);
 
+const $form = $('#newTweetForm');
+  
+    $form.on('submit', function(event){
+      event.preventDefault();
+      const serializedData = $(event.target).serialize();
+    
+      $.post('/tweets', serializedData, response => {
+        console.log(response)
+        renderTweets();
+      })
+  
+    })
 
 });
